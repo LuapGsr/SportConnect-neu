@@ -1,0 +1,113 @@
+# Anforderungen – Digital Business Projekt (Anderl 04)
+
+**Abschlusspräsentation:** 24.06. Mittwoch 11:15
+
+---
+
+## Prüfungsbestandteile
+
+Für das Modul **2.5 Digital Business** ist das Prüfungsformat eine **Modularbeit + Präsentation**.
+
+Die Prüfungsleistung wird benotet und setzt sich aus den folgenden Teilleistungen zusammen:
+
+1. **Modularbeit** (70% der Gesamtnote)
+2. **Präsentation** (30% der Gesamtnote)
+
+---
+
+## Aufgabenstellung: Digital Business Idea
+
+Entwickeln Sie im Team für eine reale Problemstellung ein ökonomisch tragfähiges digitales Geschäftsmodell. Bereiten Sie dieses als **Pitch-Deck** und als dazugehörigen **Prototyp** zur Präsentation vor potenziellen Investoren auf.
+
+---
+
+## Abgaben zur Modularbeit (alle über Moodle)
+
+- **Frist für die finale Themeneinreichung:** 11.05.2026, 14:00 Uhr
+- **Frist für die Abgabe der Modularbeit:** 22.06.2026, 14:00 Uhr
+
+---
+
+## Bestandteile der Modularbeit
+
+### 1. Pitch-Deck
+
+**Umfang:** 10–12 selbsterklärende Folien
+
+**Inhalt:**
+- Problemstellung
+- Lösungsidee
+- Wettbewerbsanalyse und Marktabschätzung
+- Geschäftsmodell zur Lösungsidee mit Fokus auf:
+  - Nutzenversprechen, USP
+  - Kunden
+  - Erlösmodell, grobe Preiseinschätzung
+  - Kostenstruktur, größte Kostentreiber
+- Nächste Schritte (Roadmap)
+
+---
+
+### 2. Prototyp
+
+**Python-Programm:**
+- Umsetzung der Lösungsidee als funktionsfähiges Python-Programm
+- inkl. Graphical User Interface (GUI)
+
+---
+
+### 3. Projektdokumentation
+
+**Umfang:** je 1 Seite; es sind die vorgegebenen Templates zu nutzen
+
+**Inhalt:**
+- Projektorganisation / Verantwortlichkeiten (Template PO)
+- KI-Nutzung (Template KI)
+
+---
+
+### 4. Kritische Reflexion (Einzelabgabe)
+
+**Umfang:** je 1 Seite (Fließtext); es ist das vorgegebene Template zu nutzen (Template Reflexion)
+
+**Fokus:**
+- Welche Stärken weisen die Abgaben der eigenen Gruppe auf?
+- An welchen Stellen bieten die Abgaben der eigenen Gruppe Verbesserungspotential?
+- Welche Verbesserungspotentiale sehen Sie bei Ihrem eigenen Vorgehen (nicht dem Vorgehen der Gruppe)?
+
+---
+
+## Anforderungen an die Präsentation
+
+**Termin:** KW 26 am Campus Pasing  
+Der genaue Terminplan und Ablauf wird rechtzeitig bekannt gegeben.
+
+- Präsentation des Pitch-Decks und des Prototyps mit anschließender Diskussion
+- In der Präsentation soll jedes Teammitglied einen Teil übernehmen und in der Diskussion zu allen Themen auskunftsfähig sein
+- **Zeitvorgabe:** 8–10 Minuten Präsentationszeit pro Team; anschließend ca. 10 Minuten Diskussion
+
+---
+
+## Bewertungskriterien
+
+### Modularbeit
+
+| Kriterium | Beschreibung |
+|---|---|
+| **Problemverständnis** | Problem klar beschrieben, realistisch und wirtschaftlich relevant; Problemvalidierung (quellenbasiert) |
+| **Lösungsidee und Innovationsgrad** | Originalität der Idee; Passung zwischen Problem und Lösung; Digitaler Mehrwert klar nachvollziehbar |
+| **Wettbewerb, Markt & strategische Einordnung** | Identifikation realer Wettbewerber; Differenzierungsstrategie erkennbar; Positionierung nachvollziehbar; Plausible Marktgröße (TAM/SAM/SOM auf Grundniveau) |
+| **Geschäftsmodell & ökonomische Tragfähigkeit** | Klar formulierte Value Proposition, eindeutiger Kundennutzen, Problem-Lösungs-Fit erkennbar; Klar definierte Zielgruppe; Logisches Monetarisierungskonzept, plausible Preisannahmen; Identifikation zentraler Kostentreiber; Logisch konsistentes Modell, nachvollziehbare wirtschaftliche Tragfähigkeit |
+| **Umsetzbarkeit** | Relevante Meilensteine definiert (Roadmap); Realistischer Zeitbezug vorhanden |
+| **Prototyp** | Funktionalität: lauffähiges Programm, Kernfunktion der Geschäftsidee umgesetzt, logische Nutzerführung; GUI: Klare Struktur, verständliche Beschriftung; Technische Qualität: Sinnvolle Programmstruktur, Kommentierung, Fehlerbehandlung (Grundniveau), erlernte Konzepte angewandt, eigenständige Einarbeitung neuer, passender Konzepte |
+| **Reflexion** | Kritische und konstruktive Reflexion der Gruppenleistung; Ehrliche und differenzierte Reflexion des eigenen Vorgehens; Nachvollziehbare, mit Beispielen erläuterte, begründete Aussagen |
+| **Formales** | Vollständigkeit; Nachvollziehbarkeit (Quellenangaben); Rechtschreibung, Grammatik; Einhaltung von Format- und Namenskonventionen |
+
+### Präsentation
+
+| Kriterium | Beschreibung |
+|---|---|
+| **Inhalt** | Richtigkeit, Vollständigkeit und Gewichtung |
+| **Struktur** | Klarheit des Aufbaus, roter Faden |
+| **Visualisierung** | Klarheit, Aussagekraft und Konsistenz |
+| **Vortrag** | Überzeugender Präsentationsstil, alle Mitglieder beteiligt |
+| **Diskussion** | Qualität der Antworten |
