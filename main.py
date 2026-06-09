@@ -292,25 +292,45 @@ class MainView(ctk.CTkFrame):
         """Öffnet ein kleines Pop-up-Fenster, um ein neues Event anzulegen"""
         dialog = ctk.CTkToplevel(self)
         dialog.title("Neues Event")
-        dialog.geometry("300x350")
+        dialog.geometry("350x550")
         dialog.configure(fg_color=COLOR_BG)
         
-        ctk.CTkLabel(dialog, text="Event Titel", font=ctk.CTkFont(weight="bold")).pack(pady=(20, 0))
-        title_e = ctk.CTkEntry(dialog, fg_color=COLOR_CARD, border_width=1, border_color=COLOR_TEXT_DIM, corner_radius=6, height=35)
+        scroll_frame = ctk.CTkScrollableFrame(dialog, fg_color="transparent")
+        scroll_frame.pack(fill="both", expand=True)
+        
+        ctk.CTkLabel(scroll_frame, text="Event Titel", font=ctk.CTkFont(weight="bold")).pack(pady=(10, 0))
+        title_e = ctk.CTkEntry(scroll_frame, fg_color=COLOR_CARD, border_width=1, border_color=COLOR_TEXT_DIM, corner_radius=6, height=35)
         title_e.pack(pady=5, padx=20, fill="x")
         
-        ctk.CTkLabel(dialog, text="Sportart", font=ctk.CTkFont(weight="bold")).pack(pady=(10, 0))
-        sport_e = ctk.CTkEntry(dialog, fg_color=COLOR_CARD, border_width=1, border_color=COLOR_TEXT_DIM, corner_radius=6, height=35)
+        ctk.CTkLabel(scroll_frame, text="Sportart", font=ctk.CTkFont(weight="bold")).pack(pady=(10, 0))
+        sport_e = ctk.CTkEntry(scroll_frame, fg_color=COLOR_CARD, border_width=1, border_color=COLOR_TEXT_DIM, corner_radius=6, height=35)
         sport_e.pack(pady=5, padx=20, fill="x")
         
+        ctk.CTkLabel(scroll_frame, text="Ort", font=ctk.CTkFont(weight="bold")).pack(pady=(10, 0))
+        location_e = ctk.CTkEntry(scroll_frame, fg_color=COLOR_CARD, border_width=1, border_color=COLOR_TEXT_DIM, corner_radius=6, height=35)
+        location_e.pack(pady=5, padx=20, fill="x")
+        
+        ctk.CTkLabel(scroll_frame, text="Datum & Uhrzeit", font=ctk.CTkFont(weight="bold")).pack(pady=(10, 0))
+        date_e = ctk.CTkEntry(scroll_frame, fg_color=COLOR_CARD, border_width=1, border_color=COLOR_TEXT_DIM, corner_radius=6, height=35)
+        date_e.pack(pady=5, padx=20, fill="x")
+        
+        ctk.CTkLabel(scroll_frame, text="Max. Teilnehmer", font=ctk.CTkFont(weight="bold")).pack(pady=(10, 0))
+        max_p_e = ctk.CTkEntry(scroll_frame, fg_color=COLOR_CARD, border_width=1, border_color=COLOR_TEXT_DIM, corner_radius=6, height=35)
+        max_p_e.pack(pady=5, padx=20, fill="x")
+        
         def save():
+            try:
+                max_p = int(max_p_e.get())
+            except ValueError:
+                max_p = 10
+                
             data.events.insert(0, {
                 "id": len(data.events)+1,
                 "title": title_e.get() or "Mein Event",
                 "sport": sport_e.get() or "Diverses",
-                "location": "München",
-                "date": "Bald",
-                "max_participants": 10,
+                "location": location_e.get() or "Nicht angegeben",
+                "date": date_e.get() or "Bald",
+                "max_participants": max_p,
                 "participants": [data.current_user["username"]],
                 "is_joined": True,
                 "is_past": False,
@@ -319,7 +339,7 @@ class MainView(ctk.CTkFrame):
             dialog.destroy()
             self.update_view()
             
-        ctk.CTkButton(dialog, text="Erstellen", fg_color=COLOR_PRIMARY, hover_color=COLOR_PRIMARY_HOVER, corner_radius=6, height=40, font=ctk.CTkFont(weight="bold"), command=save).pack(pady=30, padx=20, fill="x")
+        ctk.CTkButton(scroll_frame, text="Erstellen", fg_color=COLOR_PRIMARY, hover_color=COLOR_PRIMARY_HOVER, corner_radius=6, height=40, font=ctk.CTkFont(weight="bold"), command=save).pack(pady=20, padx=20, fill="x")
 
     def open_event(self, event):
         """Öffnet die Detailansicht eines Events (wenn man auf Info klickt)"""
