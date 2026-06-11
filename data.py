@@ -9,7 +9,7 @@
 # Aktueller (Test-)Benutzer
 # Dieser User ist direkt beim Start eingeloggt.
 current_user = {
-    "username": "test",
+    "username": "julius",
     "password": "123",
     "status": "Free",     # Status bestimmt, ob man Werbung sieht
     "applications": 3     # Limitierte Bewerbungen für Gratis-Nutzer
