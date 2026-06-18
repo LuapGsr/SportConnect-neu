@@ -525,7 +525,7 @@ class MainView(ctk.CTkFrame):
                 data.current_user["status"] = "Premium"
                 self.update_view() 
                 
-            ctk.CTkButton(premium_frame, text="Upgrade für 7,99 € / Monat", height=45, fg_color=COLOR_PREMIUM, hover_color="#b45309", text_color="white", font=ctk.CTkFont(weight="bold", size=14), corner_radius=6, command=buy_premium).pack(pady=20, padx=20, fill="x")
+            ctk.CTkButton(premium_frame, text="Upgrade für 3,49 € / Monat", height=45, fg_color=COLOR_PREMIUM, hover_color="#b45309", text_color="white", font=ctk.CTkFont(weight="bold", size=14), corner_radius=6, command=buy_premium).pack(pady=20, padx=20, fill="x")
         else:
             ctk.CTkLabel(frame, text="Du bist Premium-Mitglied!", font=ctk.CTkFont(size=20, weight="bold"), text_color=COLOR_PREMIUM).pack(pady=30)
             ctk.CTkLabel(frame, text="✔️ Unbegrenzte Anmeldungen\n✔️ Keine Werbung", justify="center", font=ctk.CTkFont(size=16)).pack()
