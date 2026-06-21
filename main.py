@@ -88,11 +88,11 @@ class LoginView(ctk.CTkFrame):
         # Eingabefelder mit Dummy-Daten vorausgefüllt (für schnelles Testen in der Präsentation)
         self.username_entry = ctk.CTkEntry(self, placeholder_text="Benutzername", width=250, height=45, corner_radius=8, border_width=1, border_color=COLOR_PRIMARY, fg_color=COLOR_CARD)
         self.username_entry.grid(row=3, column=0, pady=10)
-        self.username_entry.insert(0, "test")
+        self.username_entry.insert(0, "Paul")
         
         self.password_entry = ctk.CTkEntry(self, placeholder_text="Passwort", show="*", width=250, height=45, corner_radius=8, border_width=1, border_color=COLOR_PRIMARY, fg_color=COLOR_CARD)
         self.password_entry.grid(row=4, column=0, pady=10)
-        self.password_entry.insert(0, "123")
+        self.password_entry.insert(0, "1234")
         
         login_btn = ctk.CTkButton(self, text="Einloggen", width=250, height=45, corner_radius=8, fg_color=COLOR_PRIMARY, hover_color=COLOR_PRIMARY_HOVER, font=ctk.CTkFont(weight="bold"), command=self.login)
         login_btn.grid(row=5, column=0, pady=20, sticky="n")
@@ -378,6 +378,8 @@ class MainView(ctk.CTkFrame):
             def join():
                 if data.current_user["status"] == "Free":
                     if data.current_user["applications"] <= 0:
+                        error = ctk.CTkLabel(scroll_frame, text="Limit erreicht! Gehe auf Profil für Premium.", text_color=COLOR_PRIMARY)
+                        error.pack(fill="x", padx=10, pady=5)
                         return
                     data.current_user["applications"] -= 1
                 event["is_joined"] = True
@@ -451,8 +453,8 @@ class MainView(ctk.CTkFrame):
         btn_back = ctk.CTkButton(top_bar, text="⬅ Zurück", width=60, fg_color="transparent", text_color="white", font=ctk.CTkFont(weight="bold"), command=self.update_view)
         btn_back.pack(side="left")
         
-        chat_title = ctk.CTkLabel(top_bar, text=chat["title"], font=ctk.CTkFont(size=16, weight="bold"))
-        chat_title.pack(side="left", padx=10)
+        chat_title = ctk.CTkLabel(top_bar, text=chat["title"], font=ctk.CTkFont(size=16, weight="bold"), wraplength=230, justify="left", anchor="w")
+        chat_title.pack(side="left", padx=10, fill="x", expand=True)
         
         msg_frame = ctk.CTkScrollableFrame(self.content_frame, fg_color=COLOR_CARD, corner_radius=10)
         msg_frame.pack(fill="both", expand=True, pady=(0, 10))

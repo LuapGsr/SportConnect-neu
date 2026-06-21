@@ -9,8 +9,8 @@
 # Aktueller (Test-)Benutzer
 # Dieser User ist direkt beim Start eingeloggt.
 current_user = {
-    "username": "julius",
-    "password": "123",
+    "username": "Paul",
+    "password": "1234",
     "status": "Free",     # Status bestimmt, ob man Werbung sieht
     "applications": 3     # Limitierte Bewerbungen für Gratis-Nutzer
 }
@@ -46,7 +46,7 @@ events = [
         "location": "München",
         "date": "Heute, 17:00",
         "max_participants": 8,
-        "participants": ["Paul", "Linus", "Nick"],
+        "participants": ["Peter", "Linus", "Nick"],
         "is_joined": False,  
         "is_past": False,
         "type": "event"
@@ -58,7 +58,7 @@ events = [
         "location": "München (Süd)",
         "date": "Heute, 18:30",
         "max_participants": 5,
-        "participants": ["test", "Dieter"],
+        "participants": ["Paul", "Dieter"],
         "is_joined": True,
         "is_past": False,
         "type": "event"
@@ -82,7 +82,7 @@ events = [
         "location": "Olympiapark",
         "date": "Sonntag, 14:00",
         "max_participants": 22,
-        "participants": ["test", "Amir", "Dastin"],
+        "participants": ["Paul", "Amir", "Dastin"],
         "is_joined": True,
         "is_past": False,
         "type": "event"
@@ -94,7 +94,7 @@ events = [
         "location": "Boulderwelt München",
         "date": "Letzten Samstag",
         "max_participants": 10,
-        "participants": ["test", "Linus", "Max"],
+        "participants": ["Paul", "Linus", "Max"],
         "is_joined": True,
         "is_past": True,
         "type": "event"
@@ -110,7 +110,7 @@ chats = [
         "type": "group",
         "messages": [
             {"sender": "Dieter", "text": "Hi zusammen, wo genau treffen wir uns?"},
-            {"sender": "test", "text": "Lass uns direkt am Tierpark treffen!"},
+            {"sender": "Paul", "text": "Lass uns direkt am Tierpark treffen!"},
             {"sender": "Dieter", "text": "Alles klar, bis später."}
         ]
     },
@@ -120,7 +120,7 @@ chats = [
         "type": "private",
         "messages": [
             {"sender": "Linus", "text": "Hey, bist du morgen beim Volleyball am Start?"},
-            {"sender": "test", "text": "Weiß ich noch nicht genau. Sag dir heute Abend bescheid."}
+            {"sender": "Paul", "text": "Weiß ich noch nicht genau. Sag dir heute Abend bescheid."}
         ]
     },
     {
