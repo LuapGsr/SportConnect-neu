@@ -100,13 +100,18 @@ class LoginView(ctk.CTkFrame):
         hint = ctk.CTkLabel(self, text="(Mit Test-Daten anmelden)", font=ctk.CTkFont(size=12), text_color=COLOR_TEXT_DIM)
         hint.grid(row=6, column=0, pady=(0, 20))
         
+        self.error_label = ctk.CTkLabel(self, text="", font=ctk.CTkFont(size=12, weight="bold"), text_color="#ef4444")
+        self.error_label.grid(row=7, column=0, pady=(0, 10))
+        
     def login(self):
         """Prüft die Logindaten mit den Daten aus der data.py"""
         username = self.username_entry.get()
         password = self.password_entry.get()
         if username == data.current_user["username"] and password == data.current_user["password"]:
+            self.error_label.configure(text="")
             self.controller.show_frame("MainView")
         else:
+            self.error_label.configure(text="❌ Falscher Benutzername oder Passwort!")
             print("Falsche Logindaten")
 
 # ==============================================================================
@@ -269,6 +274,8 @@ class MainView(ctk.CTkFrame):
             
         if event["is_joined"]:
             btn = ctk.CTkButton(btn_frame, text="✔️ Angemeldet", state="disabled", fg_color="#1e293b", text_color=COLOR_TEXT_DIM, corner_radius=6, font=ctk.CTkFont(weight="bold"))
+        elif len(event["participants"]) >= event["max_participants"]:
+            btn = ctk.CTkButton(btn_frame, text="❌ Voll", state="disabled", fg_color="#1e293b", text_color="#ef4444", corner_radius=6, font=ctk.CTkFont(weight="bold"))
         else:
             btn = ctk.CTkButton(btn_frame, text="Teilnehmen", fg_color=COLOR_SUCCESS, hover_color=COLOR_SUCCESS_HOVER, text_color="white", corner_radius=6, font=ctk.CTkFont(weight="bold"), command=join_event)
             
@@ -321,12 +328,16 @@ class MainView(ctk.CTkFrame):
         def save():
             try:
                 max_p = int(max_p_e.get())
+                if max_p <= 0:
+                    max_p = 10
             except ValueError:
                 max_p = 10
                 
+            new_title = title_e.get() or "Mein Event"
+                
             data.events.insert(0, {
                 "id": len(data.events)+1,
-                "title": title_e.get() or "Mein Event",
+                "title": new_title,
                 "sport": sport_e.get() or "Diverses",
                 "location": location_e.get() or "Nicht angegeben",
                 "date": date_e.get() or "Bald",
@@ -336,6 +347,15 @@ class MainView(ctk.CTkFrame):
                 "is_past": False,
                 "type": "event"
             })
+            
+            # Automatisch einen Chat für das neue Event anlegen
+            data.chats.append({
+                "id": len(data.chats)+100,
+                "title": f"{new_title} (Event)",
+                "type": "group",
+                "messages": [{"sender": "System", "text": "Event erfolgreich erstellt! Willkommen im Chat."}]
+            })
+            
             dialog.destroy()
             self.update_view()
             
@@ -375,23 +395,27 @@ class MainView(ctk.CTkFrame):
             ctk.CTkLabel(participants_frame, text=f"👤 {person}", font=ctk.CTkFont(size=14)).pack(anchor="w", padx=15, pady=5)
             
         if not event["is_joined"]:
-            def join():
-                if data.current_user["status"] == "Free":
-                    if data.current_user["applications"] <= 0:
-                        error = ctk.CTkLabel(scroll_frame, text="Limit erreicht! Gehe auf Profil für Premium.", text_color=COLOR_PRIMARY)
-                        error.pack(fill="x", padx=10, pady=5)
-                        return
-                    data.current_user["applications"] -= 1
-                event["is_joined"] = True
-                event["participants"].append(data.current_user["username"])
-                
-                chat_exists = any(c["title"] == f"{event['title']} (Event)" for c in data.chats)
-                if not chat_exists:
-                    data.chats.append({"id": len(data.chats)+100, "title": f"{event['title']} (Event)", "type": "group", "messages": [{"sender": "System", "text": "Willkommen im Chat!"}]})
-                self.open_event(event)
-                
-            btn_join = ctk.CTkButton(scroll_frame, text="Teilnehmen", height=45, fg_color=COLOR_SUCCESS, hover_color=COLOR_SUCCESS_HOVER, text_color="white", corner_radius=8, font=ctk.CTkFont(weight="bold", size=14), command=join)
-            btn_join.pack(fill="x", padx=10, pady=25)
+            if len(event["participants"]) >= event["max_participants"]:
+                btn_full = ctk.CTkButton(scroll_frame, text="❌ Event ist bereits voll", state="disabled", height=45, fg_color="#1e293b", text_color="#ef4444", corner_radius=8, font=ctk.CTkFont(weight="bold", size=14))
+                btn_full.pack(fill="x", padx=10, pady=25)
+            else:
+                def join():
+                    if data.current_user["status"] == "Free":
+                        if data.current_user["applications"] <= 0:
+                            error = ctk.CTkLabel(scroll_frame, text="Limit erreicht! Gehe auf Profil für Premium.", text_color=COLOR_PRIMARY)
+                            error.pack(fill="x", padx=10, pady=5)
+                            return
+                        data.current_user["applications"] -= 1
+                    event["is_joined"] = True
+                    event["participants"].append(data.current_user["username"])
+                    
+                    chat_exists = any(c["title"] == f"{event['title']} (Event)" for c in data.chats)
+                    if not chat_exists:
+                        data.chats.append({"id": len(data.chats)+100, "title": f"{event['title']} (Event)", "type": "group", "messages": [{"sender": "System", "text": "Willkommen im Chat!"}]})
+                    self.open_event(event)
+                    
+                btn_join = ctk.CTkButton(scroll_frame, text="Teilnehmen", height=45, fg_color=COLOR_SUCCESS, hover_color=COLOR_SUCCESS_HOVER, text_color="white", corner_radius=8, font=ctk.CTkFont(weight="bold", size=14), command=join)
+                btn_join.pack(fill="x", padx=10, pady=25)
         else:
             btn_joined = ctk.CTkButton(scroll_frame, text="✔️ Bereits angemeldet", state="disabled", height=45, fg_color="#1e293b", text_color=COLOR_TEXT_DIM, corner_radius=8, font=ctk.CTkFont(weight="bold", size=14))
             btn_joined.pack(fill="x", padx=10, pady=25)
